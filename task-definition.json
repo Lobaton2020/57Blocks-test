@@ -1,0 +1,133 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:002313459129:task-definition/57Blocks-test:1",
+    "containerDefinitions": [
+        {
+            "name": "57Blocks",
+            "image": "002313459129.dkr.ecr.us-east-1.amazonaws.com/repoapp:57Blocks",
+            "cpu": 0,
+            "links": [],
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "environment": [
+                {
+                    "name": "JWT_TIME_EXPIRES_SECONDS",
+                    "value": "1200"
+                },
+                {
+                    "name": "MONGODB_NAME",
+                    "value": "test"
+                },
+                {
+                    "name": "HTTP_PORT",
+                    "value": "80"
+                },
+                {
+                    "name": "MONGODB_URI",
+                    "value": "mongodb+srv://cluster0.zybix.mongodb.net/?retryWrites=true&w=majority"
+                },
+                {
+                    "name": "MONGODB_USER",
+                    "value": "Test"
+                },
+                {
+                    "name": "JWT_SECRET_KEY",
+                    "value": "41c68f574d1e0c640369656dfdd02eec"
+                },
+                {
+                    "name": "MONGODB_PASSWORD",
+                    "value": "HsduEvsesNPlK75i"
+                }
+            ],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [],
+            "dnsServers": [],
+            "dnsSearchDomains": [],
+            "extraHosts": [],
+            "dockerSecurityOptions": [],
+            "dockerLabels": {},
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/57Blocks-test",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "57Blocks-test",
+    "executionRoleArn": "arn:aws:iam::002313459129:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 1,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2022-08-14T21:43:36.838Z",
+    "registeredBy": "arn:aws:iam::002313459129:root",
+    "tags": [
+        {
+            "key": "ecs:taskDefinition:createdFrom",
+            "value": "ecs-console-v2"
+        },
+        {
+            "key": "ecs:taskDefinition:stackId",
+            "value": "arn:aws:cloudformation:us-east-1:002313459129:stack/ECS-Console-V2-TaskDefinition-2f9105a8-f9a7-40c6-bfe8-352a98ebe0cc/236e6c00-1c1a-11ed-b94c-0ecf20204b4f"
+        }
+    ]
+}
