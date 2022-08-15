@@ -1,15 +1,15 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:002313459129:task-definition/57Blocks-test:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:002313459129:task-definition/57Blocks-test:6",
     "containerDefinitions": [
         {
             "name": "57Blocks",
-            "image": "002313459129.dkr.ecr.us-east-1.amazonaws.com/repoapp:57Blocks",
+            "image": "002313459129.dkr.ecr.us-east-1.amazonaws.com/repoapp:882e50ed4f547d49bab4f20121e5866021db297f",
             "cpu": 0,
             "links": [],
             "portMappings": [
                 {
-                    "containerPort": 8080,
-                    "hostPort": 8080,
+                    "containerPort": 80,
+                    "hostPort": 80,
                     "protocol": "tcp"
                 }
             ],
@@ -72,7 +72,7 @@
     "family": "57Blocks-test",
     "executionRoleArn": "arn:aws:iam::002313459129:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 6,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -118,7 +118,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2022-08-14T21:43:36.838Z",
+    "registeredAt": "2022-08-15T21:49:16.090Z",
     "registeredBy": "arn:aws:iam::002313459129:root",
     "tags": [
         {
@@ -127,7 +127,7 @@
         },
         {
             "key": "ecs:taskDefinition:stackId",
-            "value": "arn:aws:cloudformation:us-east-1:002313459129:stack/ECS-Console-V2-TaskDefinition-2f9105a8-f9a7-40c6-bfe8-352a98ebe0cc/236e6c00-1c1a-11ed-b94c-0ecf20204b4f"
+            "value": "arn:aws:cloudformation:us-east-1:002313459129:stack/ECS-Console-V2-TaskDefinition-eb974b14-2f5f-4b02-b6b7-2127868c0d59/17ee7c60-1ce4-11ed-8664-120dccfce243"
         }
     ]
 }
