@@ -10,4 +10,5 @@ export default Joi.object({
   MONGODB_USER: Joi.string().required(),
   MONGODB_PASSWORD: Joi.string().required(),
   MONGODB_NAME: Joi.string().required(),
+  RANDOM_URL_API: Joi.string().required(),
 });

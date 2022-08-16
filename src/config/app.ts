@@ -3,6 +3,7 @@ import { APP_CONFIG, JWT_CONFIG, MONGO_DB } from './constants';
 
 interface IEnvAppConfig {
   httpPort: number;
+  randomNumApi: string
 }
 
 export interface IJwtConfig {
@@ -13,6 +14,7 @@ export type IAppConfig = IEnvAppConfig & ConfigService;
 
 export default registerAs(APP_CONFIG, () => ({
   httpPort: process.env.HTTP_PORT || 3000,
+  randomNumApi: process.env.RANDOM_URL_API,
 }));
 
 export const defaultPagination = {
