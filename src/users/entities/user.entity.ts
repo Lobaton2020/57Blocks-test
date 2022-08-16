@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import EncryptPassword from 'src/common/encript-password';
+import EncryptPassword from 'src/common/helpers/encript-password';
 
 export type UserDocument = User & Document;
 

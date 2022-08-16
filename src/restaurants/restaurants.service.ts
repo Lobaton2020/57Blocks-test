@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import Paginate from 'src/common/helpers/pagination.class';
 import { Pagination } from 'src/common/interfaces/pagination.interface';
 import { UsersService } from 'src/users/users.service';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
@@ -14,7 +15,6 @@ export class RestaurantsService {
     private readonly userService: UsersService,
   ) {}
   async create(createRestaurantDto: CreateRestaurantDto, userId: string) {
-    console.log(userId);
     const user = await this.userService.findOne(userId);
     if (!user)
       throw new BadRequestException(
@@ -25,20 +25,34 @@ export class RestaurantsService {
       owner: userId,
     });
   }
+  // buildPagination(data){
+  //   return {
+  //     data,
 
-  findAll(userId: string, pagination) {
-    const { skip, limit } = pagination;
-    return this.restaurantModel.find({ owner: userId }).skip(skip).limit(limit);
+  //   }
+  // }
+  async findAll(userId: string, pagination: Pagination) {
+    const { page, limit } = pagination;
+    const opts = { owner: userId };
+    const total = await this.restaurantModel.count(opts);
+    const currentPage = (page - 1) * limit;
+    const data = await this.restaurantModel.find(opts).skip(page).limit(limit);
+
+    return Paginate.build(data, page, limit, total, currentPage);
   }
 
-  findAllPublic(pagination: Pagination) {
-    const { skip, limit } = pagination;
-    return this.restaurantModel
-      .find({ isPublic: true })
+  async findAllPublic(pagination: Pagination) {
+    const { page, limit } = pagination;
+    const opts = { isPublic: true };
+    const total = await this.restaurantModel.count(opts);
+    const currentPage = (page - 1) * limit;
+    const data = await this.restaurantModel
+      .find(opts)
       .populate('owner', '-password')
-      .skip(skip)
+      .skip(page)
       .limit(limit)
       .exec();
+    return Paginate.build(data, page, limit, total, currentPage);
   }
 
   findOnePublic(productId) {

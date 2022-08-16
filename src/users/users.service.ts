@@ -28,10 +28,15 @@ export class UsersService {
     return this.userModel.findOne({ _id: id });
   }
   async findOneByEmail(emailIn) {
-    const { _id, name, lastname, email, password } =
-      await this.userModel.findOne({
-        email: emailIn,
-      });
-    return [{ _id, name, lastname, email }, { password }];
+    try {
+      const { _id, name, lastname, email, password } =
+        await this.userModel.findOne({
+          email: emailIn,
+        });
+      return [{ _id, name, lastname, email }, { password }];
+    } catch (err) {
+      Logger.error(err);
+      throw new BadRequestException('bad credentials');
+    }
   }
 }
