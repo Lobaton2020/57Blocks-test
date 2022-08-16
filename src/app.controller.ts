@@ -20,7 +20,7 @@ export class AppController {
   }
 
   @Get('random')
-  async randonData(@Res() res: Response) {
+  async randomData(@Res() res: Response) {
     this.httpServide
       .post(this.configService.get<IAppConfig>(APP_CONFIG).randomNumApi)
       .subscribe(({ data: number }) => {

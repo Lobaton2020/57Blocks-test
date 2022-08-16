@@ -5,7 +5,7 @@ import {
   Logger,
   PipeTransform,
 } from '@nestjs/common';
-import { defaultPagination } from 'src/config/app';
+import { defaultPagination } from '../../config/app';
 
 @Injectable()
 export class PaginationPipe implements PipeTransform {

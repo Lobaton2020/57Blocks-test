@@ -10,7 +10,7 @@ import {
   Min,
   ValidateNested,
 } from 'class-validator';
-import { IsArrayUrl } from 'src/common/decorators/is-array-url.decorator';
+import { IsArrayUrl } from '../../common/decorators/is-array-url.decorator';
 
 export class Menu {
   @ApiProperty()

@@ -16,18 +16,18 @@ import {
 import { RestaurantsService } from './restaurants.service';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
-import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
-import { Public } from 'src/auth/decorators/public.decorator';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
+import { Public } from '../auth/decorators/public.decorator';
 import mongoose from 'mongoose';
-import { Pagination } from 'src/common/interfaces/pagination.interface';
-import { PaginationPipe } from 'src/common/pipes/pagination.pipe';
+import { Pagination } from '../common/interfaces/pagination.interface';
+import { PaginationPipe } from '../common/pipes/pagination.pipe';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { ApiPaginatedResponse } from 'src/common/decorators/api-paginate-response';
-import { PaginatedDto } from 'src/common/dto/paginated.dto';
+import { ApiPaginatedResponse } from '../common/decorators/api-paginate-response';
+import { PaginatedDto } from '../common/dto/paginated.dto';
 import {
   ApiQueryLimit,
   ApiQueryPage,
-} from 'src/common/decorators/api-query-pagination';
+} from '../common/decorators/api-query-pagination';
 
 const ValidateMongoIdOrRejected = (id) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {

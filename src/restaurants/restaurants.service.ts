@@ -1,9 +1,9 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import Paginate from 'src/common/helpers/pagination.class';
-import { Pagination } from 'src/common/interfaces/pagination.interface';
-import { UsersService } from 'src/users/users.service';
+import Paginate from '../common/helpers/pagination.class';
+import { Pagination } from '../common/interfaces/pagination.interface';
+import { UsersService } from '../users/users.service';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 import { Restaurant } from './entities/restaurant.entity';
@@ -25,18 +25,16 @@ export class RestaurantsService {
       owner: userId,
     });
   }
-  // buildPagination(data){
-  //   return {
-  //     data,
 
-  //   }
-  // }
   async findAll(userId: string, pagination: Pagination) {
     const { page, limit } = pagination;
     const opts = { owner: userId };
     const total = await this.restaurantModel.count(opts);
     const currentPage = (page - 1) * limit;
-    const data = await this.restaurantModel.find(opts).skip(currentPage).limit(limit);
+    const data = await this.restaurantModel
+      .find(opts)
+      .skip(currentPage)
+      .limit(limit);
 
     return Paginate.build(data, page, limit, total, currentPage);
   }
