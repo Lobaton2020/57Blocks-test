@@ -1,5 +1,6 @@
 FROM node:14-alpine AS builder
 WORKDIR "/app"
+ENV PORT=80
 COPY . .
 RUN npm ci
 RUN npm run build
