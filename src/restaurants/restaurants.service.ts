@@ -36,7 +36,7 @@ export class RestaurantsService {
     const opts = { owner: userId };
     const total = await this.restaurantModel.count(opts);
     const currentPage = (page - 1) * limit;
-    const data = await this.restaurantModel.find(opts).skip(page).limit(limit);
+    const data = await this.restaurantModel.find(opts).skip(currentPage).limit(limit);
 
     return Paginate.build(data, page, limit, total, currentPage);
   }
@@ -49,7 +49,7 @@ export class RestaurantsService {
     const data = await this.restaurantModel
       .find(opts)
       .populate('owner', '-password')
-      .skip(page)
+      .skip(currentPage)
       .limit(limit)
       .exec();
     return Paginate.build(data, page, limit, total, currentPage);
