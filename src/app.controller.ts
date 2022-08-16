@@ -1,18 +1,11 @@
 import { HttpService } from '@nestjs/axios';
-import { Controller, Get, HttpStatus, Req, Res } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Response } from 'express';
 import { ConfigService } from '@nestjs/config';
-import { IAppConfig } from './config/app';
-import { APP_CONFIG } from './config/constants';
 
 @Controller()
 export class AppController {
-  constructor(
-    private readonly appService: AppService,
-    private readonly httpServide: HttpService,
-    private readonly configService: ConfigService,
-  ) {}
+  constructor(private readonly appService: AppService) {}
 
   @Get()
   getHello() {
@@ -20,13 +13,11 @@ export class AppController {
   }
 
   @Get('random')
-  async randomData(@Res() res: Response) {
-    this.httpServide
-      .post(this.configService.get<IAppConfig>(APP_CONFIG).randomNumApi)
-      .subscribe(({ data: number }) => {
-        res.status(HttpStatus.OK).json({
-          value: number,
-        });
-      });
+  async randomData() {
+    return {
+      message:
+        "This action doesn't work as expecter because the API has an error with cors, but you have the value",
+      value: Math.floor(Math.random() * 1000000),
+    };
   }
 }
